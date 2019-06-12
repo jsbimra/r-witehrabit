@@ -1,0 +1,61 @@
+body {
+    background: #fff;
+}
+
+header h1, header h2{
+    margin-bottom: 10px; 
+}
+
+.logo {
+  display: inline-block;
+  background: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 3px solid black;
+  vertical-align: middle;
+  position: relative;
+  z-index: 1;
+  margin-right: 5px;
+}
+
+.logo:after {
+  content: " ";
+  width: 30px;
+  height: 30px;
+  background: black;
+  position: absolute;
+  border-radius: 50%;
+  left: 50%;
+  margin-left: -15px;
+  top: 50%;
+  margin-top: -15px;
+  z-index: 2;
+}
+
+.logo:before {
+  content: "";
+  text-align: right;
+  width: 10px;
+  height: 10px;
+  background: transparent;
+  position: absolute;
+  border-style: solid;
+  border-width: 13px 24px 12px 0;
+  border-color: transparent #ffffff transparent transparent;
+  right: -3px;
+  top: 50%;
+  margin-top: -13px;
+  z-index: 3;
+}
+
+.logo .character {
+    font-size: 11px;
+    font-weight: bolder;
+    color: black;
+    position: absolute;
+    z-index: 4;
+    top: 50%;
+    margin-top:-8px;
+    right: 0;
+}

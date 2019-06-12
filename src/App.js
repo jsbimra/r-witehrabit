@@ -4,127 +4,51 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import './App.css';
-import { FormControl, NativeSelect, InputLabel, Input, Grid, TextField } from '@material-ui/core';
-import DateFnsUtils from '@date-io/date-fns';
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker,
-} from '@material-ui/pickers';
+import RequestAppointment from './components/RequestAppoitnment';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
-    paddingTop: '20px',
+    paddingTop: '30px',
+    paddingBottom: '30px',
   },
-  formControl: {
-    fontSize: 14,
-    width: '100%',
-    marginBottom: 15
-  },
-  select: {
-    width: '100%',
-    // width: 'calc(100vw/3)',
+  headingStyle: {
+    marginBottom: 15,
   }
-})
+}));
+
 function App() {
 
   const classes = useStyles();
   const [selectedDate, setSelectedDate] = React.useState(new Date('2019-06-11T21:16:54'));
 
   function handleDateChange(date) {
+    // console.log('date selected', date);
     setSelectedDate(date);
+  }
+
+  function handleNext(nextView) {
+    console.log('Handle Next button ', nextView);
   }
 
   return (
     <React.Fragment>
       <CSSBaseline />
-      <Container maxWidth="sm" className="App" classes={{ root: classes.root }} >
+      <Container maxWidth="sm" className="App" classes={{ root: classes.root }}>
         <header className="App-header">
 
-          <Typography variant="subtitle2" component="h1" gutterBottom >
-            Peninsula Diagnostic Imaging
+          <Typography variant="subtitle2" component="h1" classes={{root: classes.headingStyle}}>
+            <span className="logo"><span className="character">P</span></span> Peninsula Diagnostic Imaging
           </Typography>
-          <Typography variant="h4" component="h2" gutterBottom>
+          <Typography variant="h4" component="h2" classes={{root: classes.headingStyle}}>
             Request an appointment
           </Typography>
 
         </header>
 
-        <form autoComplete="off">
-          <FormControl classes={{ root: classes.formControl }}>
-            <InputLabel shrink htmlFor="clinicLocationId">
-              Clinic Location:
-              </InputLabel>
-            <NativeSelect
-              variant="outlined"
-              classes={{ select: classes.select }}
-              input={<Input name="clinicLocation" id="clinicLocationId" />}
-              inputProps={{ 'aria-label': 'location' }}
-            >
-              <option value={'Phoenix'}>Phoenix</option>
-              <option value={'Idhao'}>Idhao</option>
-              <option value={'Mountain view'}>Mountain view</option>
-            </NativeSelect>
-          </FormControl>
+        <RequestAppointment handleNext={handleNext} handleDateChange={handleDateChange} selectedDate={selectedDate} />
 
-          <FormControl classes={{ root: classes.formControl }}>
-            <InputLabel shrink htmlFor="examId">
-              Exam:
-              </InputLabel>
-            <NativeSelect
-              variant="outlined"
-              classes={{ select: classes.select }}
-              input={<Input name="exam" id="examId" />}
-              inputProps={{ 'aria-label': 'exam' }}
-            >
-              <option value={'MRI'}>MRI</option>
-              <option value={'XRAY'}>X-RAY</option>
-              <option value={'BT'}>BLOOD TEST</option>
-            </NativeSelect>
-          </FormControl>
-
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
-
-            <FormControl classes={{ root: classes.formControl }}>
-              <KeyboardDatePicker
-                margin="normal"
-                id="mui-pickers-date"
-                label="Date Requested:"
-                value={selectedDate}
-                onChange={handleDateChange}
-                KeyboardButtonProps={{
-                  'aria-label': 'change date',
-                }}
-              />
-            </FormControl>
-            <FormControl classes={{ root: classes.formControl }}>
-              <KeyboardTimePicker
-                margin="normal"
-                id="mui-pickers-time"
-                label="Time requested:"
-                value={selectedDate}
-                onChange={handleDateChange}
-                KeyboardButtonProps={{
-                  'aria-label': 'change time',
-                }}
-              />
-            </FormControl>
-          </MuiPickersUtilsProvider>
-
-          <FormControl classes={{ root: classes.formControl }}>
-            <TextField
-              id="notes"
-              label="Notes"
-              multiline
-              rowsMax="4"
-              value=""
-              placeholder="Notes"
-              margin="normal"
-            />
-          </FormControl>
-        </form>
       </Container>
-    </React.Fragment >
+    </React.Fragment>
   );
 }
 
