@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import './App.css';
 import RequestAppointment from './components/RequestAppoitnment';
 import CompleteRequestAppointment from './components/CompleteRequestAppointment';
+import { Button } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -47,7 +48,7 @@ function App() {
       <Container maxWidth="sm" className="App" classes={{ root: classes.root }}>
         <header className="App-header">
           <Typography variant="subtitle2" component="h1" classes={{ root: classes.headingStyle }}>
-            <span className="logo"><span className="character">P</span></span> Peninsula Diagnostic Imaging
+            <a href="/" className="logo-link"><span className="logo"><span className="character">P</span></span> Peninsula Diagnostic Imaging</a>
           </Typography>
         </header>
 

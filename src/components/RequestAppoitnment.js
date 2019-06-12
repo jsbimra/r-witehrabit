@@ -229,7 +229,8 @@ function RequestAppointment(props) {
                         <PhotoCamera className={classes.icon} />
                     </IconButton>
                 </label>
-                {'formData ' + JSON.stringify(formData)}
+
+                {/* {'formData ' + JSON.stringify(formData)} */}
 
                 <Grid container
                     direction="row"
@@ -238,7 +239,6 @@ function RequestAppointment(props) {
                     <Grid item>
                         <Button variant="contained" size="small" className={classes.button}
                             onClick={triggerHandleNext} value={JSON.stringify(formData)} disabled={!formData.errorStatus ? false : true}>
-                            {/* <SaveIcon className={clsx(classes.leftIcon, classes.iconSmall)} /> */}
                             Next
                     </Button>
                     </Grid>

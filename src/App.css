@@ -6,6 +6,11 @@ header h1, header h2{
     margin-bottom: 10px; 
 }
 
+.logo-link {
+  text-decoration: none;
+  color: #000;
+}
+
 .logo {
   display: inline-block;
   background: white;
